@@ -5,7 +5,6 @@
 
 void testArena();
 
-HRESULT hr;
 
 
 int main(int argc, const char** argv) {
@@ -15,6 +14,9 @@ int main(int argc, const char** argv) {
 
 	Renderer* renderer = createRenderer(permArena);
 
+	if(renderer == NULL) return 0;
+
+	//Returns zero when the user has closed the window
 	while(updateRenderer(permArena, renderer) > 0) {
 		//game
 	}

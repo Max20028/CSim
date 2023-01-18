@@ -31,8 +31,11 @@ void ReleaseArena(Arena* arena) {
 	free(arena);
 }
 
+//TODO: NEED TO PUT INCREASE SIZE IN while LOOP IN CASE ANYTHING IS MORE THAN DOUBLE SIZE. AHHHHHH
+//Did it but need to test it works as... I havent. Valgrind?
+//Also it would be much more efficient to look ahead to the size I need and only realloc once
 void* ArenaPush(Arena* arena, size_t size) {
-	if(arena->currOffset + size > arena->memsize) {
+	while(arena->currOffset + size > arena->memsize) {
 		printf("Increasing size of Arena to %d\n", arena->memsize*2);
 		arena->mem = realloc(arena->mem, arena->memsize*2);
 		arena->memsize = arena->memsize*2;

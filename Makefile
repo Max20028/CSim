@@ -1,4 +1,4 @@
-CC = clang
+CC = gcc
 #Removed -municode from cflags
 #Look into how to build .o to other folder
 CFLAGS = -g -std=c11
@@ -7,7 +7,7 @@ all: output
 
 
 output: main
-	$(CC) $(CFLAGS) -o blank.exe main.o arena.o renderer.o
+	$(CC) $(CFLAGS) -o blank.exe main.o arena.o renderer.o -ld3d11 -ldxgi -ldxguid
 
 main: arena renderer
 	$(CC) $(CFLAGS) -c main.c
